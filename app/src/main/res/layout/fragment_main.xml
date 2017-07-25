@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/skipLiveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="进入直播间" />
+
+    <!--Carousel figure 轮播图的意思-->
+    <cn.bingoogolapple.bgabanner.BGABanner
+        android:id="@+id/banner_content_view"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:banner_indicatorGravity="bottom|right"
+        app:banner_pageChangeDuration="1000"
+        app:banner_pointAutoPlayAble="true"
+        app:banner_pointContainerBackground="@android:color/transparent"
+        app:banner_pointDrawable="@drawable/bga_banner_selector_point_hollow"
+        app:banner_pointTopBottomMargin="5dp"
+        app:banner_transitionEffect="alpha" />
+</LinearLayout>

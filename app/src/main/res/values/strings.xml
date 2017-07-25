@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">BalaFM</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <array name="titleTextArray">
+        <item>首页</item>
+        <item>分类</item>
+        <item>发现</item>
+        <item>我</item>
+    </array>
+</resources>
