@@ -38,7 +38,7 @@ class MainFragment : Fragment() {
         carouselFigureView.setDelegate { banner, _, _, position -> Toast.makeText(banner.context, "点击了第${position + 1}个图", Toast.LENGTH_SHORT).show() }
 
         //测试直播页面
-        skipLiveButton.setOnClickListener { startActivity(Intent(activity, LiveActivity::class.java)) }
+        skipLiveButton.setOnClickListener { LiveActivity.actionStart(activity, 1066) }
 
         return view
     }

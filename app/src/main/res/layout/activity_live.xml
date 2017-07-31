@@ -1,36 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LiveActivityLinearLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/bg_live" />
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_activity_live"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center_vertical">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/mToolbar"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:background="@android:color/transparent"
-            android:textColor="@android:color/background_light">
+        <ImageView
+            android:id="@+id/backToMainImageView"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="15dp"
+            android:src="@drawable/ic_activity_live_back" />
 
-        </android.support.v7.widget.Toolbar>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="3dp"
+            android:text="500人在听"
+            android:textColor="#FFF"
+            android:textSize="12sp" />
 
+        <ImageView
+            android:id="@+id/share_channel_image_view"
+            android:layout_width="19dp"
+            android:layout_height="19dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="2dp"
+            android:src="@drawable/live_btn_share" />
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginEnd="20dp"
+            android:layout_toStartOf="@id/share_channel_image_view"
+            android:src="@drawable/ic_live_star_channel_normal" />
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/talkButton"
+    <RelativeLayout
+        android:layout_width="180dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_activity_live_anchor_info">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/anchor_head_pic"
+            android:layout_width="35dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/head_default_live" />
+
+        <TextView
+            android:id="@+id/anchor_nick_name"
+            android:layout_width="73dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@id/anchor_head_pic"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="大仙女hahaa"
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/shape_live_normal_star"
+            android:gravity="center"
+            android:text="＋关注 "
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+
+        <View
+            android:id="@+id/live_last_green_point"
+            android:layout_width="6dp"
+            android:layout_height="6dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="6dp"
+            android:layout_marginStart="6dp"
+            android:layout_toEndOf="@+id/anchor_head_pic"
+            android:background="@drawable/bg_live_last_green_point" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="2dp"
+            android:layout_marginStart="52dp"
+            android:text="00 : 00 : 00"
+            android:textColor="#FFF"
+            android:textSize="11sp" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/liveMessageRecycleView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <LinearLayout
+        android:id="@+id/toggleSoftInputLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/playImageView"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="3dp"
+            android:src="@drawable/live_btn_play" />
+
+
+        <EditText
+            android:id="@+id/toggleSoftInputEditText"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="7dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_activity_live_anchor_info"
+            android:gravity="center_vertical"
+            android:hint="    说点什么吧 。。。"
+            android:textColorHint="#beabab"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="7dp"
+            android:background="@drawable/bg_activity_live_anchor_info"
+            android:src="@drawable/ic_live_btn_call_default" />
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginStart="7dp"
+            android:background="@drawable/bg_activity_live_anchor_info"
+            android:src="@drawable/live_btn_gift" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/sendMessageLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:visibility="invisible"
-        android:text="开始讲话"/>
-</FrameLayout>
+        android:background="@android:color/background_light"
+        android:orientation="horizontal"
+        android:visibility="gone">
 
+        <EditText
+            android:id="@+id/sendMessageEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="3dp"
+            android:layout_marginStart="7dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_frame_corner"
+            android:hint="    说点什么吧 。。。"
+            android:maxLines="3"
+            android:padding="5dp"
+            android:textColorHint="#beabab"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/sendMessageButton"
+            android:layout_width="56dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="5dp"
+            android:background="@drawable/bg_send_message_button_disabled"
+            android:text="发送"
+            android:textColor="#dedede" />
+    </LinearLayout>
+</LinearLayout>

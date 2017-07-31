@@ -1,6 +1,7 @@
-package com.nice.balafm
+package com.nice.balafm.util
 
 import android.content.Context
+import android.util.Log
 import android.widget.Toast
 import okhttp3.*
 
@@ -9,9 +10,9 @@ private val client = OkHttpClient()
 
 private val JSON = MediaType.parse("application/json; charset=utf-8")
 
-internal val HostAddress = ""
+internal val HOST_ADDRESS = "http://115.159.67.95"
 
-fun Context.postJsonReequest(url: String, json: String, callback: Callback) {
+fun Context.postJsonRequest(url: String, json: String, callback: Callback, okHttpClient: OkHttpClient = client) {
 
     fun isNetworkAvailable() = true
 
@@ -25,5 +26,6 @@ fun Context.postJsonReequest(url: String, json: String, callback: Callback) {
             .url(url)
             .post(body)
             .build()
-    client.newCall(request).enqueue(callback)
+    Log.d("request_to_server", "URL: $url, JSON: $json")
+    okHttpClient.newCall(request).enqueue(callback)
 }

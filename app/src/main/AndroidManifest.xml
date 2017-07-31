@@ -54,11 +54,14 @@
 
         </activity>
 
-        <service android:name="com.algebra.sdk.Controller"></service>
+        <service android:name="com.algebra.sdk.Controller">
+
+        </service>
 
         <activity
             android:name=".RegisterActivity"
-            android:label="">
+            android:label=""
+            android:windowSoftInputMode="adjustResize">
 
         </activity>
     </application>

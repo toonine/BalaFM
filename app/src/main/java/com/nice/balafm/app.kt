@@ -1,7 +1,9 @@
 package com.nice.balafm
 
 import android.app.Application
+import android.content.Context
 import android.graphics.Color
+import android.preference.PreferenceManager
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
@@ -14,8 +16,12 @@ class Application : Application() {
         super.onCreate()
         val result = API.init(applicationContext)
         Log.d(TAG, "API init finished ? $result")
+
+        globalUid = PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt(KEY_LAST_UID, 0)
     }
 }
+
+const val KEY_LAST_UID = "last_uid"
 
 val accountApi
     get() = API.getAccountApi()
@@ -69,3 +75,11 @@ fun AppCompatActivity.setFillStatusBar() {
     window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
     window.statusBarColor = Color.TRANSPARENT
 }
+
+const val RESULT_SUCCESS = 0
+
+internal var globalUid = 0
+    set(value) {
+        field = value
+        Log.d(TAG, "uid has changed: uid = $value")
+    }
