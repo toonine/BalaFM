@@ -25,6 +25,9 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
 
+    <uses-feature android:name="android.hardware.wifi" android:required="true" />
+    <uses-feature android:name="android.hardware.microphone" android:required="true" />
+
     <application
         android:name=".Application"
         android:allowBackup="true"
@@ -33,7 +36,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -50,7 +54,7 @@
             android:label="">
 
         </activity>
-        <activity android:name=".LiveActivity">
+        <activity android:name=".LiveActivity" >
 
         </activity>
 
@@ -64,6 +68,37 @@
             android:windowSoftInputMode="adjustResize">
 
         </activity>
+
+        <activity android:name=".ChangePasswordActivity">
+
+        </activity>
+        <activity android:name=".GetAdvicesActivity"/>
+        <activity android:name=".ListenHistoryActivity"/>
+        <activity android:name=".OrderChannelActivity"/>
+        <activity android:name=".PersonInfoActivity"/>
+        <activity android:name=".SearchActivity"/>
+        <activity android:name=".SafeActivity"/>
+        <receiver android:name="com.jzone.entity.BootUpReceiver">
+            <intent-filter >
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.HOME"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.jzone.entity.PttReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PTT.up" />
+                <action android:name="android.intent.action.PTT.down" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.jzone.utils.MediaKeys">
+            <intent-filter android:priority="1000000000" >
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+            </intent-filter>
+        </receiver>
+        <activity android:name="com.jzone.tl_sdk.NotificationActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <receiver android:name="com.algebra.sdk.PingRecevier"/>
     </application>
 
 </manifest>

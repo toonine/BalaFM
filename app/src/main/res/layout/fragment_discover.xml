@@ -1,13 +1,92 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.nice.balafm.DiscoverFragment">
+    android:orientation="vertical"
+    android:background="#f0f0f0">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <!--悄悄话-->
+    <RelativeLayout
+        style="@style/bar"
+        android:id="@+id/whisper">
+        <ImageView
+            android:id="@+id/image_whisper"
+            style="@style/bar_icon"/>
+        <TextView
+            style="@style/bar_title"
+            android:id="@+id/text_whisper"
+            android:text="悄悄话"
+            android:layout_toRightOf="@id/image_whisper"
+            />
+        <TextView
+            style="@style/bar_comment"
+            android:text="有句话我一直很想对你说"
+            android:layout_toLeftOf="@id/msg_whisper"/>
+        <ImageView
+            style="@style/bar_msg_icon"
+            android:id="@+id/msg_whisper"
+            android:layout_toLeftOf="@id/enter_whisper"/>
+        <ImageView
+            style="@style/bar_red_dot"
+            android:layout_toLeftOf="@id/enter_whisper"/>
+        <ImageView
+            style="@style/bar_enter"
+            android:id="@+id/enter_whisper"
+            />
+    </RelativeLayout>
 
-</FrameLayout>
+    <!--分割线-->
+    <View style="@style/split_line"></View>
+
+
+    <!--留言板-->
+    <RelativeLayout
+        style="@style/bar"
+        android:id="@+id/msgBoard">
+        <ImageView
+            style="@style/bar_icon"
+            android:id="@+id/msgBoard_icon"/>
+        <TextView
+            style="@style/bar_title"
+            android:text="留言板"
+            android:layout_toRightOf="@id/msgBoard_icon"/>
+        <TextView
+            style="@style/bar_comment"
+            android:text="您有新的消息"
+            android:layout_toLeftOf="@id/msgBoard_msg_icon"/>
+        <ImageView style="@style/bar_msg_icon"
+            android:id="@+id/msgBoard_msg_icon"
+            android:layout_toLeftOf="@id/msgBoard_dot"
+            />
+        <ImageView style="@style/bar_red_dot"
+            android:id="@+id/msgBoard_dot"
+            android:layout_toLeftOf="@id/msgBoard_enter"/>
+        <ImageView
+            android:id="@+id/msgBoard_enter"
+            style="@style/bar_enter"/>
+    </RelativeLayout>
+
+    <View style="@style/split_block"/>
+
+    <RelativeLayout
+        style="@style/bar"
+        android:id="@+id/killWolves">
+        <ImageView style="@style/bar_icon"
+            android:id="@+id/killWolves_icon"/>
+        <TextView style="@style/bar_title"
+            android:text="狼人杀"
+            android:layout_toRightOf="@id/killWolves_icon"/>
+        <TextView style="@style/bar_comment"
+            android:text="天黑请闭眼"
+            android:id="@+id/killWolves_comment"
+            android:layout_toLeftOf="@id/killWolves_msg"/>
+        <ImageView style="@style/bar_msg_icon"
+            android:id="@+id/killWolves_msg"
+            android:layout_toLeftOf="@id/killWolves_dot"/>
+        <ImageView style="@style/bar_red_dot"
+            android:id="@+id/killWolves_dot"
+            android:layout_toLeftOf="@id/killWolvers_enter"/>
+        <ImageView style="@style/bar_enter"
+            android:id="@+id/killWolvers_enter"/>
+    </RelativeLayout>
+</LinearLayout>

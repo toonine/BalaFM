@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="账号与安全"
+        android:textStyle="bold"
+        android:gravity="center"/>
+    <View android:layout_width="match_parent"
+        android:layout_height="3px"
+        android:background="#e0e0e0"
+        android:layout_marginBottom="20dp"/>
+    <LinearLayout style="@style/safe_setting_bar"
+        android:id="@+id/safe_phone_bar">
+        <ImageView style="@style/safe_setting_bar_icon"
+            android:src="@drawable/ic_phone"/>
+        <TextView style="@style/safe_setting_bar_title"
+            android:text="手机号" />
+        <View style="@style/safe_setting_bar_space"/>
+        <TextView style="@style/safe_setting_bar_edit"
+            android:id="@+id/safe_phone"
+            android:text="13110630609"/>
+        <ImageView style="@style/safe_setting_bar_enter"/>
+    </LinearLayout>
+    <LinearLayout style="@style/safe_setting_bar">
+        <ImageView style="@style/safe_setting_bar_icon"
+            android:src="@drawable/ic_mail"/>
+        <TextView style="@style/safe_setting_bar_title"
+            android:text="邮箱" />
+        <View style="@style/safe_setting_bar_space"/>
+        <TextView style="@style/safe_setting_bar_edit"
+            android:id="@+id/safe_mail"
+            android:text="15162xxx@bala.com"/>
+        <ImageView style="@style/safe_setting_bar_enter"/>
+    </LinearLayout>
+    <LinearLayout style="@style/safe_setting_bar"
+        android:id="@+id/safe_pass_bar">
+        <ImageView style="@style/safe_setting_bar_icon"
+            android:src="@drawable/ic_password"/>
+        <TextView style="@style/safe_setting_bar_title"
+            android:text="密码" />
+        <View style="@style/safe_setting_bar_space"/>
+        <TextView style="@style/safe_setting_bar_edit"
+            android:id="@+id/safe_pass"
+            android:password="true"
+            android:text="111111111111"/>
+        <ImageView style="@style/safe_setting_bar_enter"/>
+    </LinearLayout>
+</LinearLayout>

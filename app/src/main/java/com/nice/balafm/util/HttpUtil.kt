@@ -12,6 +12,7 @@ private val JSON = MediaType.parse("application/json; charset=utf-8")
 
 internal val HOST_ADDRESS = "http://115.159.67.95"
 
+@JvmOverloads
 fun Context.postJsonRequest(url: String, json: String, callback: Callback, okHttpClient: OkHttpClient = client) {
 
     fun isNetworkAvailable() = true

@@ -107,7 +107,7 @@ interface OnChannelListenerDefault : OnChannelListener {
     override fun onPubChannelRenamed(p0: Int, p1: Int) {
     }
 
-    override fun onPubChannelFocusResult(p0: Int, p1: Int) {
+    override fun onPubChannelFocusResult(uid: Int, reason: Int) {
     }
 }
 
@@ -126,10 +126,9 @@ interface OnSessionListenerDefault : OnSessionListener {
     }
 
     override fun onDialogLeaved(p0: Int, p1: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onSessionReleased(p0: Int, p1: Int, p2: Int) {
+    override fun onSessionReleased(selfUserId: Int, sessionType: Int, sessionId: Int) {
     }
 
     override fun onSessionPresenceAdded(p0: Int, p1: Int, p2: MutableList<Contact>?) {

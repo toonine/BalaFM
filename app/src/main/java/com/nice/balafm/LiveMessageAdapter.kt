@@ -8,10 +8,14 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.nice.balafm.bean.LiveMessage
+import com.nice.balafm.bean.Type
 import de.hdodenhof.circleimageview.CircleImageView
 
 
-class LiveMessageAdapter(private val mContext: Context, private val messageList: List<LiveMessage>) : RecyclerView.Adapter<LiveMessageAdapter.ViewHolder>() {
+class LiveMessageAdapter(private val messageList: List<LiveMessage>) : RecyclerView.Adapter<LiveMessageAdapter.ViewHolder>() {
+
+    private var mContext: Context? = null
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val meMessageLayout = view.findViewById<RelativeLayout>(R.id.me_message_layout)!!
@@ -25,7 +29,10 @@ class LiveMessageAdapter(private val mContext: Context, private val messageList:
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.live_message_item, parent, false)
+        if (mContext == null) {
+            mContext = parent.context
+        }
+        val view = LayoutInflater.from(mContext).inflate(R.layout.live_message_item, parent, false)
         return ViewHolder(view)
     }
 
@@ -35,7 +42,7 @@ class LiveMessageAdapter(private val mContext: Context, private val messageList:
             Type.SENT -> {
                 holder.meMessageLayout.visibility = View.VISIBLE
                 holder.otherMessageLayout.visibility = View.GONE
-                Glide.with(mContext).load(liveMessage.heedPic).into(holder.meHeadPicImage)
+                Glide.with(mContext).load(liveMessage.heedPic).placeholder(R.drawable.ic_user_default_head).error(R.drawable.ic_user_default_head).into(holder.meHeadPicImage)
                 holder.meNickNameTextView.text = liveMessage.nickName
                 holder.meMessageTextView.text = liveMessage.content
             }
@@ -43,7 +50,7 @@ class LiveMessageAdapter(private val mContext: Context, private val messageList:
             Type.RECEIVED -> {
                 holder.otherMessageLayout.visibility = View.VISIBLE
                 holder.meMessageLayout.visibility = View.GONE
-                Glide.with(mContext).load(liveMessage.heedPic).into(holder.otherHeadPicImage)
+                Glide.with(mContext).load(liveMessage.heedPic).placeholder(R.drawable.ic_user_default_head).error(R.drawable.ic_user_default_head).into(holder.otherHeadPicImage)
                 holder.otherNickName.text = liveMessage.nickName
                 holder.otherMessageTextView.text = liveMessage.content
             }

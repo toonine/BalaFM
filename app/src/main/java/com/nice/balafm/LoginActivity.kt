@@ -250,6 +250,7 @@ class LoginActivity : AppCompatActivity(), OnAccountListenerDefault {
                                             LoginMode.CODE -> ""
                                         })
                                         .apply()
+                                mProgressDialog.dismiss()
                                 finish()
                             }
                         } else

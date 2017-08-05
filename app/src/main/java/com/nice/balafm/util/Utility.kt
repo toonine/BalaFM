@@ -14,3 +14,18 @@ internal fun validateVerificationCode(code: String): Boolean {
     val regex = "^\\d{6}\$"
     return code.matches(regex.toRegex())
 }
+
+fun getFormatTime(_time: Long): String {
+    val time = _time / 1000
+    val second = time % 60
+    val minute = time % 3600 / 60
+    val hour = time / 3600
+
+    val strSecond = ("00" + second).substring(("00" + second).length - 2)
+
+    val strMinute = ("00" + minute).substring(("00" + minute).length - 2)
+
+    val strHour = ("00" + hour).substring(("00" + hour).length - 2)
+
+    return "$strHour : $strMinute : $strSecond"
+}

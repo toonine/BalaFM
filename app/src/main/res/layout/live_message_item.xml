@@ -3,10 +3,10 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp" >
+    android:padding="10dp">
 
     <RelativeLayout
-        android:id="@+id/me_message_layout"
+        android:id="@+id/other_message_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -14,7 +14,7 @@
             android:id="@+id/other_head_pic"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:src="@drawable/head_default_live" />
+            android:src="@drawable/head_default" />
 
         <LinearLayout
             android:layout_width="250dp"
@@ -54,7 +54,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/other_message_layout"
+        android:id="@+id/me_message_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end" >
@@ -81,7 +81,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:background="@drawable/live_bg_chat_me">
+                android:background="@drawable/live_bg_chat_me"
+                android:layout_gravity="end">
 
                 <TextView
                     android:id="@+id/me_message_text_view"
@@ -99,7 +100,7 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_toEndOf="@id/nick_name_and_content_linear_layout"
-            android:src="@drawable/head_default_live" />
+            android:src="@drawable/head_default" />
     </RelativeLayout>
 
 </LinearLayout>

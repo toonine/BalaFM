@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="个人资料"
+        android:textStyle="bold"
+        android:gravity="center"/>
+    <View android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#5f5f5f"
+        android:layout_marginBottom="20dp"/>
+    <LinearLayout style="@style/person_setting_bar">
+        <ImageView style="@style/person_setting_bar_icon"
+            android:src="@drawable/ic_icon"/>
+        <TextView style="@style/person_setting_bar_title"
+            android:text="头像"/>
+        <View style="@style/person_setting_bar_space"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/person_setting_icon"/>
+    </LinearLayout>
+    <View style="@style/person_setting_bar_split"/>
+    <LinearLayout style="@style/person_setting_bar">
+        <ImageView style="@style/person_setting_bar_icon"
+            android:src="@drawable/ic_name"
+            android:layout_width="wrap_content" />
+        <TextView style="@style/person_setting_bar_title"
+            android:text="昵称"/>
+        <EditText style="@style/person_setting_bar_edit"
+            android:id="@+id/person_setting_name"
+            android:text="爸爸我"/>
+    </LinearLayout>
+    <View style="@style/person_setting_bar_split"/>
+    <LinearLayout style="@style/person_setting_bar">
+        <ImageView style="@style/person_setting_bar_icon"
+            android:src="@drawable/ic_name"
+            android:layout_width="wrap_content" />
+        <TextView style="@style/person_setting_bar_title"
+            android:text="性别"/>
+        <View style="@style/person_setting_bar_space"/>
+        <TextView style="@style/person_setting_bar_edit"
+            android:text="保密"
+            android:id="@+id/person_setting_sex"/>
+    </LinearLayout>
+    <View style="@style/person_setting_bar_split"/>
+    <LinearLayout style="@style/person_setting_bar">
+        <ImageView style="@style/person_setting_bar_icon"
+            android:src="@drawable/ic_name"
+            android:layout_width="wrap_content" />
+        <TextView style="@style/person_setting_bar_title"
+            android:text="生日"/>
+        <View style="@style/person_setting_bar_space"/>
+        <TextView style="@style/person_setting_bar_edit"
+            android:id="@+id/person_setting_birth"
+            android:text="1997-01-01"/>
+    </LinearLayout>
+    <View style="@style/person_setting_bar_split"/>
+
+    <View style="@style/person_setting_bar_split"/>
+    <LinearLayout style="@style/person_setting_bar">
+        <ImageView style="@style/person_setting_bar_icon"
+            android:src="@drawable/ic_brief"
+            android:layout_height="wrap_content" />
+        <TextView style="@style/person_setting_bar_title"
+            android:text="简介"/>
+        <View style="@style/person_setting_bar_space"/>
+    </LinearLayout>
+    <View style="@style/person_setting_bar_split"/>
+    <EditText
+        style="@style/person_setting_bar"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_editview"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:inputType="textMultiLine"
+        android:gravity="left|top"
+        android:padding="3dp"
+        android:textSize="14dp"
+        android:hint="用一句话介绍在自己吧..."
+        android:id="@+id/person_setting_brief"/>
+    <TextView
+        android:background="#ff8f3f"
+        android:layout_marginTop="20dp"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:text="确认修改"
+        android:gravity="center"
+        android:id="@+id/person_setting_yes"/>
+</LinearLayout>

@@ -1,7 +1,6 @@
 package com.nice.balafm
 
 import android.app.Application
-import android.content.Context
 import android.graphics.Color
 import android.preference.PreferenceManager
 import android.support.v7.app.AppCompatActivity
@@ -44,7 +43,7 @@ val deviceApi
     get() = API.getDeviceApi()
 
 val contact
-    get() = accountApi?.whoAmI()
+    get() = accountApi.whoAmI()
 
 
 fun AppCompatActivity.setStatusBarLightMode(isFontColorDark: Boolean): Boolean {
@@ -53,7 +52,7 @@ fun AppCompatActivity.setStatusBarLightMode(isFontColorDark: Boolean): Boolean {
         val clazz = window.javaClass
         try {
             var darkModeFlag = 0
-            val layoutParams = Class.forName("android.view.MiuiWindowManager\$LayoutParams")
+            val layoutParams = Class.forName("android.mView.MiuiWindowManager\$LayoutParams")
             val field = layoutParams.getField("EXTRA_FLAG_STATUS_BAR_DARK_MODE")
             darkModeFlag = field.getInt(layoutParams)
             val extraFlagField = clazz.getMethod("setExtraFlags", Int::class.javaPrimitiveType, Int::class.javaPrimitiveType)
@@ -78,7 +77,7 @@ fun AppCompatActivity.setFillStatusBar() {
 
 const val RESULT_SUCCESS = 0
 
-internal var globalUid = 0
+internal var globalUid = 14
     set(value) {
         field = value
         Log.d(TAG, "uid has changed: uid = $value")
