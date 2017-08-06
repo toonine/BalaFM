@@ -20,11 +20,15 @@
             android:src="@drawable/ic_icon"/>
         <TextView style="@style/person_setting_bar_title"
             android:text="头像"/>
-        <View style="@style/person_setting_bar_space"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:id="@+id/person_setting_icon"/>
+            android:id="@+id/person_setting_icon" />
     </LinearLayout>
     <View style="@style/person_setting_bar_split"/>
     <LinearLayout style="@style/person_setting_bar">

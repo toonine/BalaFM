@@ -78,7 +78,7 @@ public class PersonInfoActivity extends AppCompatActivity implements View.OnClic
                                             sex.setText(SexIntToString(userinfo.getInt("sex")));
                                             Glide.with(PersonInfoActivity.this).load(userinfo.getString("icon")).into(icon);
                                             brief.setText(userinfo.getString("sign"));
-                                            birth.setText(userinfo.getString("birth"));
+                                            birth.setText(userinfo.getString("birth").substring(0, 10));
                                         } catch (JSONException e) {
                                             e.printStackTrace();
                                         }
@@ -103,11 +103,11 @@ public class PersonInfoActivity extends AppCompatActivity implements View.OnClic
             JSONObject jsonObject=new JSONObject();
             jsonObject.put("uid",AppKt.getGlobalUid());
             jsonObject.put("name",name.getText().toString());
-            jsonObject.put("sex",sex.getText());
+            jsonObject.put("sex", SexStringToInt(sex.getText().toString()));
             jsonObject.put("sign",brief.getText().toString());
             jsonObject.put("birth",birth.getText());
             Toast.makeText(this,jsonObject.toString(),Toast.LENGTH_SHORT);
-            HttpUtilKt.postJsonRequest(this, HttpUtilKt.getHOST_ADDRESS() + "/getUserInfo", jsonObject.toString(), new Callback() {
+            HttpUtilKt.postJsonRequest(this, HttpUtilKt.getHOST_ADDRESS() + "/me/info/update", jsonObject.toString(), new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
 
@@ -115,7 +115,8 @@ public class PersonInfoActivity extends AppCompatActivity implements View.OnClic
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
-                    String resBody=response.body().toString();
+                    String resBody = response.body().string();
+                    Log.d("PIA save:", resBody);
                     if(JsonUtilKt.isGoodJson(resBody)){
                         try {
                             JSONObject res=new JSONObject(resBody);
@@ -154,6 +155,7 @@ public class PersonInfoActivity extends AppCompatActivity implements View.OnClic
     {
         switch (view.getId()){
             case R.id.person_setting_yes:
+                saveInfo();
                 bye();
                 break;
         }
@@ -165,5 +167,17 @@ public class PersonInfoActivity extends AppCompatActivity implements View.OnClic
             case 2:return "女";
             default:return "此次应该有BUG";
         }
+    }
+
+    public int SexStringToInt(String s) {
+        switch (s) {
+            case "男":
+                return 1;
+            case "女":
+                return 2;
+            case "保密":
+                return 0;
+        }
+        return -1;
     }
 }
