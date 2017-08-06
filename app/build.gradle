@@ -41,7 +41,6 @@ dependencies {
     implementation 'com.google.zxing:core:3.2.1'
     implementation 'cn.bingoogolapple:bga-qrcodecore:1.1.7@aar'
     implementation 'cn.bingoogolapple:bga-zxing:1.1.7@aar'
-    implementation 'com.android.support:design:26.0.0'
     implementation 'de.hdodenhof:circleimageview:2.1.0'
     implementation 'com.android.support:support-v4:26.0.0'
     implementation 'cn.bingoogolapple:bga-banner:2.1.7@aar'

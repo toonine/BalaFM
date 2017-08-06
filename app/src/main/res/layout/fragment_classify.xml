@@ -12,40 +12,32 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <LinearLayout
-            android:id="@+id/fragment_main_skip_search"
-            android:layout_width="0dp"
-            android:layout_height="28dp"
-            android:layout_marginStart="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/bg_fragment_main_skip_search"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_marginStart="5dp"
-                android:src="@drawable/ic_fragment_main_search" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginStart="5dp"
-                android:gravity="center_vertical"
-                android:text="今天你想听点什么呢 ~"
-                android:textColor="#bababa"
-                android:textSize="13sp" />
-        </LinearLayout>
-
         <ImageView
-            android:id="@+id/fragment_main_skip_scan_qrcode"
+            android:id="@+id/fragment_classify_skip_scan_qrcode"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="15dp"
             android:src="@drawable/ic_fragment_main_skip_scan" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="分类"
+            android:textSize="17sp"
+            android:textColor="#000" />
+
+        <ImageView
+            android:id="@+id/fragment_classify_skip_search"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_activity_main_search" />
     </LinearLayout>
+
 
     <View
         android:layout_width="match_parent"

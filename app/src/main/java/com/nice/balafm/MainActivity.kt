@@ -3,6 +3,7 @@ package com.nice.balafm
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import com.algebra.sdk.API
 import kotlinx.android.synthetic.main.activity_main.*
 

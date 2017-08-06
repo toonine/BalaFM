@@ -1,17 +1,13 @@
 package com.nice.balafm;
 
-import android.app.Activity;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,11 +26,8 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-/**
- * Created by 23721 on 2017/8/3.
- */
 
-public class ChangePasswordActivity extends Activity implements View.OnClickListener,View.OnFocusChangeListener{
+public class ChangePasswordActivity extends AppCompatActivity implements View.OnClickListener, View.OnFocusChangeListener {
     private EditText oldPass;
     private EditText newPass;
     private EditText affirmPass;
@@ -53,6 +46,7 @@ public class ChangePasswordActivity extends Activity implements View.OnClickList
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppKt.setStatusBarLightMode(this, true);
         setContentView(R.layout.activity_change_password);
         oldPass=findViewById(R.id.change_pass_old);
         oldPassSign=findViewById(R.id.change_pass_old_sign);

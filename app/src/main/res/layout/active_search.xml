@@ -20,15 +20,15 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="5dp"
             android:gravity="center_vertical"
-            android:background="@drawable/bg_search_text_field"
+            android:background="@drawable/bg_fragment_main_skip_search"
             >
             <ImageView
                 android:id="@+id/search_icon"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_marginLeft="5dp"
                 android:layout_centerVertical="true"
-                android:src="@drawable/ic_search"/>
+                android:src="@drawable/ic_fragment_main_search" />
             <EditText
                 android:id="@+id/search_text"
                 android:layout_marginLeft="5dp"
