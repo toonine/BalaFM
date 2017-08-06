@@ -1,7 +1,7 @@
 package com.nice.balafm;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -31,13 +31,14 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class ListenHistoryActivity extends Activity {
+public class ListenHistoryActivity extends AppCompatActivity {
     private ArrayList<ChannelModel> channels;
     private RecyclerView list;
     private EditText searchString;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppKt.setStatusBarLightMode(this, true);
         setContentView(R.layout.activity_listen_history);
         list=findViewById(R.id.listen_history_list);
         searchString=findViewById(R.id.listen_history_search);

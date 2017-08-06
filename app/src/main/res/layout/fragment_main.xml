@@ -304,15 +304,39 @@
 
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="9sp"
-                    android:textColor="#cacaca"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_gravity="center_horizontal"
-                    android:text="————————————————————   没有内容了  ————————————————————" />
+                    android:padding="10dp"
+                    android:gravity="center_vertical"
+                    android:background="#8ce9e9e9"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_marginStart="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="1dp"
+                        android:background="#e9e9e9" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="9sp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="#cacaca"
+                        android:layout_gravity="center_horizontal"
+                        android:text="没有内容了" />
+
+                    <View
+                        android:layout_marginEnd="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="1dp"
+                        android:background="#e9e9e9" />
+                </LinearLayout>
+
             </LinearLayout>
         </ScrollView>
     </android.support.v4.widget.SwipeRefreshLayout>

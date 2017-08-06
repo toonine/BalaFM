@@ -181,7 +181,6 @@ class LiveActivity : AppCompatActivity(), OnSessionListenerDefault, OnChannelLis
         mConnectSocketProgressDialog.setMessage("获取直播信息中...")
         mConnectSocketProgressDialog.show()
 
-
         mSocket.on(EVENT_CHANNEL_INFO) { args ->
             val json = (args[0] as JSONObject).toString()
             Log.d(TAG, "on $EVENT_CHANNEL_INFO : $json")

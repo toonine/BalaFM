@@ -9,7 +9,8 @@
         android:paddingHorizontal="15dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:background="#FFF">
         <ImageView
             android:scaleType="fitXY"
             android:layout_width="25dp"
@@ -26,7 +27,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#f0f0f0" />
+        android:background="#DEDEDE" />
 
     <ScrollView
         android:layout_width="match_parent"
