@@ -5,6 +5,18 @@
     android:orientation="vertical"
     android:background="#f0f0f0">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="发 现"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:background="#ffffff" />
+
+    <View
+        android:background="#e0e0e0"
+        android:layout_height="1dp"
+        android:layout_width="match_parent" />
     <!--悄悄话-->
     <RelativeLayout
         style="@style/bar"

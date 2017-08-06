@@ -75,7 +75,9 @@
         <activity android:name=".GetAdvicesActivity"/>
         <activity android:name=".ListenHistoryActivity"/>
         <activity android:name=".OrderChannelActivity"/>
-        <activity android:name=".PersonInfoActivity"/>
+        <activity android:name=".PersonInfoActivity">
+
+        </activity>
         <activity android:name=".SearchActivity"/>
         <activity android:name=".SafeActivity"/>
         <receiver android:name="com.jzone.entity.BootUpReceiver">

@@ -99,7 +99,7 @@ class MainFragment : Fragment() {
                         Log.d(TAG, "dataList: ${dataList.joinToString (separator = ", "){ it.columnName }}")
                         dataList.forEach {
                             val guideAdapter = COLUMN_NAME_TO_VIEW[it.columnName]!!.adapter as FragmentMainGuideAdapter
-                            guideAdapter.guides = it.programList
+                            guideAdapter.guides = it.programList.filter { it != null }
                             guideAdapter.notifyDataSetChanged()
                             swipeRefreshLayout?.isRefreshing = false
                         }

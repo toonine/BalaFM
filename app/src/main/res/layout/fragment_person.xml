@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#ffffff">
     <RelativeLayout
         android:paddingHorizontal="15dp"
         android:layout_width="match_parent"
@@ -11,21 +12,36 @@
         android:gravity="center_vertical">
         <ImageView
             android:scaleType="fitXY"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:src="@drawable/ic_message"/>
         <ImageView
             android:scaleType="fitXY"
             android:layout_alignParentRight="true"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:src="@drawable/ic_setting"/>
     </RelativeLayout>
-    <LinearLayout
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#f0f0f0" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_marginHorizontal="25dp"
         android:layout_width="match_parent"
         android:layout_height="160dp"
-        android:layout_marginTop="10dp"
-        android:paddingHorizontal="10dp">
+        android:layout_marginTop="10dp">
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -35,8 +51,8 @@
             android:gravity="center_horizontal">
             <de.hdodenhof.circleimageview.CircleImageView
                 android:src="@drawable/ic_person_icon"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:id="@+id/my_icon"
                 />
 
@@ -68,17 +84,17 @@
             </RelativeLayout>
 
         </LinearLayout>
-
         <LinearLayout
-            android:paddingTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:paddingTop="5dp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            android:layout_marginRight="10dp"
             android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#000"
                 android:text="个性签名:"/>
             <TextView
                 android:layout_marginTop="5dp"
@@ -88,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:text="这个家伙很懒，什么都没有留下"/>
             <LinearLayout
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
@@ -109,7 +125,6 @@
 
             </LinearLayout>
 
-
             <RelativeLayout
                 android:layout_marginTop="10dp"
                 android:layout_width="190dp"
@@ -117,104 +132,210 @@
                 android:paddingVertical="5dp"
                 android:background="#ff5555"
                 android:gravity="center">
-                <ImageView
-                    android:id="@+id/studio_icon"
 
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:src="@drawable/ic_macphone"/>
-                <TextView android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:gravity="center"
-                    android:text="主播工作室"
-                    android:textColor="#ffffff"
-                    android:layout_toRightOf="@id/studio_icon"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:id="@+id/person_ahchor_studio"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:id="@+id/studio_icon"
+                        android:scaleType="fitXY"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_anchor_studio" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="主播工作室"
+                        android:textColor="#ffffff"
+                        android:layout_toRightOf="@id/studio_icon" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/person_become_anchor"
+                    android:layout_width="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:id="@+id/macphone_icon"
+
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_macphone" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="成为主播"
+                        android:textColor="#ffffff"
+                        android:layout_toRightOf="@id/macphone_icon" />
+                </LinearLayout>
+
             </RelativeLayout>
 
         </LinearLayout>
 
     </LinearLayout>
     <View android:layout_width="match_parent"
-        android:layout_height="1px"
+        android:layout_height="2px"
         android:background="#f0f0f0"
         />
     <RelativeLayout style="@style/bar"
-        android:id="@+id/bar_subscribe">
+        android:id="@+id/bar_subscribe"
+        android:layout_marginTop="30dp">
+
+        <ImageView
+            style="@style/bar_icon"
+            android:id="@+id/bar_order_channel_icon"
+            android:background="@null"
+            android:src="@drawable/ic_order_channel" />
         <TextView style="@style/bar_title"
-            android:layout_marginLeft="40dp"
             android:text="订阅频道"
             android:textColor="#2f2f2f"
-            android:layout_toRightOf="@id/icon"/>
+            android:layout_toRightOf="@id/bar_order_channel_icon" />
 
     </RelativeLayout>
     <View android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="#f0f0f0"
+        android:background="#e0e0e0"
         />
     <RelativeLayout style="@style/bar"
         android:id="@+id/bar_history">
+
+        <ImageView
+            style="@style/bar_icon"
+            android:id="@+id/bar_listen_hsitory_icon"
+            android:background="@null"
+            android:src="@drawable/ic_listen_history" />
         <TextView style="@style/bar_title"
             android:id="@+id/title"
-            android:layout_marginLeft="40dp"
             android:text="历史记录"
             android:textColor="#2f2f2f"
-            android:layout_toRightOf="@id/icon"/>
+            android:layout_toRightOf="@id/bar_listen_hsitory_icon" />
 
     </RelativeLayout>
     <View android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#f0f0f0"
+        android:layout_height="1dp"
+        android:background="#e0e0e0"
         />
     <RelativeLayout style="@style/bar"
         android:id="@+id/bar_purse">
+
+        <ImageView
+            style="@style/bar_icon"
+            android:id="@+id/bar_purse_icon"
+            android:background="@null"
+            android:src="@drawable/ic_purse" />
         <TextView style="@style/bar_title"
-            android:layout_marginLeft="40dp"
             android:text="我的钱包"
             android:textColor="#2f2f2f"
-            android:layout_toRightOf="@id/icon"/>
+            android:layout_toRightOf="@id/bar_purse_icon" />
 
     </RelativeLayout>
     <View android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#f0f0f0"
+        android:layout_height="1dp"
+        android:background="#e0e0e0"
         />
     <RelativeLayout style="@style/bar"
         android:id="@+id/bar_safe">
+
+        <ImageView
+            style="@style/bar_icon"
+            android:id="@+id/bar_safe_icon"
+            android:background="@null"
+            android:src="@drawable/ic_safe" />
         <TextView style="@style/bar_title"
-            android:layout_marginLeft="40dp"
             android:text="账号与安全"
             android:textColor="#2f2f2f"
-            android:layout_toRightOf="@id/icon"/>
+            android:layout_toRightOf="@id/bar_safe_icon" />
 
     </RelativeLayout>
     <View android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#f0f0f0"
+        android:layout_height="1dp"
+        android:background="#e0e0e0"
         />
     <RelativeLayout style="@style/bar"
         android:id="@+id/bar_advice">
+
+        <ImageView
+            style="@style/bar_icon"
+            android:id="@+id/bar_advice_icon"
+            android:background="@null"
+            android:src="@drawable/ic_purse" />
         <TextView style="@style/bar_title"
-            android:layout_marginLeft="40dp"
             android:text="意见反馈"
             android:textColor="#2f2f2f"
-            android:layout_toRightOf="@id/icon"/>
+            android:layout_toRightOf="@id/bar_advice_icon" />
 
     </RelativeLayout>
     <View android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#f0f0f0"
+        android:layout_height="1dp"
+        android:background="#e0e0e0"
         />
     <RelativeLayout style="@style/bar"
-        android:id="@+id/bar_esc">
+        android:id="@+id/bar_about">
+
+        <ImageView
+            style="@style/bar_icon"
+            android:id="@+id/bar_about_icon"
+            android:background="@null"
+            android:src="@drawable/ic_about_us" />
         <TextView style="@style/bar_title"
-            android:layout_marginLeft="40dp"
-            android:text="退出"
+            android:text="关于我们"
             android:textColor="#2f2f2f"
-            android:layout_toRightOf="@id/icon"/>
+            android:layout_toRightOf="@id/bar_about_icon" />
 
     </RelativeLayout>
     <View android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#f0f0f0"
+        android:layout_height="1dp"
+        android:background="#e0e0e0"
         />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginHorizontal="30dp"
+                android:gravity="center"
+                android:id="@+id/person_loginOrExit">
+
+                <TextView
+                    android:id="@+id/person_exit"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="退出当前账号"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:textColor="#ffffff"
+                    android:background="#ff0000"
+                    android:layout_toRightOf="@id/icon"
+                    android:clickable="true" />
+
+                <TextView
+                    android:id="@+id/person_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="登陆"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:textColor="#ffffff"
+                    android:background="#1791e3"
+                    android:layout_toRightOf="@id/icon"
+                    android:clickable="true" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
