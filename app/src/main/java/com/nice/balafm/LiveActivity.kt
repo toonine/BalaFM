@@ -180,10 +180,7 @@ class LiveActivity : AppCompatActivity(), OnSessionListenerDefault, OnChannelLis
         mConnectSocketProgressDialog.setTitle("")
         mConnectSocketProgressDialog.setMessage("获取直播信息中...")
         mConnectSocketProgressDialog.show()
-        /**
-         * 这句要删aaaaaaaaaaaaaaaaaaaaaaaaaa啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
-         */
-        globalUid = 14
+
 
         mSocket.on(EVENT_CHANNEL_INFO) { args ->
             val json = (args[0] as JSONObject).toString()

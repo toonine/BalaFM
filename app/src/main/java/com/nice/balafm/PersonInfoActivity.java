@@ -3,6 +3,7 @@ package com.nice.balafm;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -62,7 +63,8 @@ public class PersonInfoActivity extends AppCompatActivity implements View.OnClic
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
-                    String resBody=response.body().toString();
+                    String resBody = response.body().string();
+                    Log.d("PIA init", resBody);
                     if(JsonUtilKt.isGoodJson(resBody)){
                         try {
                             JSONObject res=new JSONObject(resBody);
