@@ -3,12 +3,14 @@ package com.nice.balafm;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.bumptech.glide.Glide;
 import com.nice.balafm.util.HttpUtilKt;
 import com.nice.balafm.util.JsonUtilKt;
 ;
@@ -41,14 +43,14 @@ public class PersonInfoActivity extends AppCompatActivity implements View.OnClic
         birth=findViewById(R.id.person_setting_birth);
 
         init();
-        findViewById(R.id.person_setting_birth).setOnClickListener(this);
+        findViewById(R.id.person_setting_yes).setOnClickListener(this);
     }
     public void init(){
         try {
             JSONObject jsonObject=new JSONObject();
             jsonObject.put("uid",AppKt.getGlobalUid());
             Toast.makeText(this,jsonObject.toString(),Toast.LENGTH_SHORT);
-            HttpUtilKt.postJsonRequest(this, HttpUtilKt.getHOST_ADDRESS() + "/getUserInfo", jsonObject.toString(), new Callback() {
+            HttpUtilKt.postJsonRequest(this, HttpUtilKt.getHOST_ADDRESS() + "/me/info/get", jsonObject.toString(), new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
                     runOnUiThread(new Runnable() {
@@ -61,7 +63,8 @@ public class PersonInfoActivity extends AppCompatActivity implements View.OnClic
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
-                    String resBody=response.body().toString();
+                    String resBody = response.body().string();
+                    Log.d("PIA init", resBody);
                     if(JsonUtilKt.isGoodJson(resBody)){
                         try {
                             JSONObject res=new JSONObject(resBody);
@@ -73,6 +76,7 @@ public class PersonInfoActivity extends AppCompatActivity implements View.OnClic
                                         try {
                                             name.setText(userinfo.getString("name"));
                                             sex.setText(SexIntToString(userinfo.getInt("sex")));
+                                            Glide.with(PersonInfoActivity.this).load(userinfo.getString("icon")).into(icon);
                                             brief.setText(userinfo.getString("sign"));
                                             birth.setText(userinfo.getString("birth"));
                                         } catch (JSONException e) {
@@ -149,7 +153,7 @@ public class PersonInfoActivity extends AppCompatActivity implements View.OnClic
     public void onClick(View view)
     {
         switch (view.getId()){
-            case R.id.person_setting_birth:
+            case R.id.person_setting_yes:
                 bye();
                 break;
         }

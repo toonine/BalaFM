@@ -45,7 +45,7 @@
 
     <style name="bar_title">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">25dp</item>
+        <item name="android:layout_height">35dp</item>
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:textSize">15dp</item>
         <item name="android:textColor">#000000</item>
@@ -54,11 +54,12 @@
     </style>
 
     <style name="bar_icon">
-        <item name="android:layout_width">20dp</item>
-        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">25dp</item>
         <item name="android:layout_marginLeft">15dp</item>
         <item name="android:layout_centerVertical">true</item>
         <item name="android:background">#000000</item>
+        <item name="android:scaleType">fitXY</item>
     </style>
 
     <style name="bar_comment">
@@ -86,7 +87,7 @@
 
     <style name="bar_enter">
         <item name="android:layout_width">15dp</item>
-        <item name="android:layout_height">25dp</item>
+        <item name="android:layout_height">15dp</item>
         <item name="android:layout_marginRight">15dp</item>
         <item name="android:layout_centerVertical">true</item>
         <item name="android:layout_alignParentRight">true</item>

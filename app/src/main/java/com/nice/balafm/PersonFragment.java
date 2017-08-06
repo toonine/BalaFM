@@ -13,6 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.nice.balafm.model.AnchorModel;
+import com.nice.balafm.model.UserModel;
 import com.nice.balafm.util.HttpUtilKt;
 import com.nice.balafm.util.JsonUtilKt;
 
@@ -38,15 +41,20 @@ public class PersonFragment extends Fragment implements View.OnClickListener{
     private View adviceBar;
     private View subscribeBar;
     private View listenHistoryBar;
+    private View loginButton;
+    private View exitButton;
+    private View anchorStudioButton;
+    private View becomeAnchorButton;
     private static final int PERSON_INFO_SETTING_CODE=1;
     private static final int USER_SAFE_CODE=2;
     private static final int REPORT_QUESTIONG_CODE=3;
+    private static final int PERSON_LOGIN_CODE = 4;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_person,container,false);
         name=view.findViewById(R.id.my_name);
-       // icon=activity.findViewById(R.id.my_icon);
+        icon = view.findViewById(R.id.my_icon);
         words=view.findViewById(R.id.my_words);
         concern=view.findViewById(R.id.my_concern);
         fans=view.findViewById(R.id.my_fans);
@@ -55,21 +63,49 @@ public class PersonFragment extends Fragment implements View.OnClickListener{
         setInfoBar=view.findViewById(R.id.set_person_info);
         adviceBar=view.findViewById(R.id.bar_advice);
         subscribeBar=view.findViewById(R.id.bar_subscribe);
+        loginButton = view.findViewById(R.id.person_login);
+        exitButton = view.findViewById(R.id.person_exit);
+        anchorStudioButton = view.findViewById(R.id.person_ahchor_studio);
+        becomeAnchorButton = view.findViewById(R.id.person_become_anchor);
 
         adviceBar.setOnClickListener(this);
         safeBar.setOnClickListener(this);
         setInfoBar.setOnClickListener(this);
         listenHistoryBar.setOnClickListener(this);
         subscribeBar.setOnClickListener(this);
-
+        loginButton.setOnClickListener(this);
+        exitButton.setOnClickListener(this);
+        init();
         return view;
+    }
+
+    public void login() {
+        Intent intent = new Intent(getActivity(), LoginActivity.class);
+        startActivityForResult(intent, PERSON_LOGIN_CODE);
+
+    }
+
+    public void exit() {
+        AppKt.setGlobalUid(0);
+        init();
+    }
+
+    public boolean isLogin() {
+        return AppKt.getGlobalUid() != 0;
     }
     public void init()
     {
+        if (AppKt.getGlobalUid() == 0) {
+            name.setText("游客");
+            words.setText("这个家伙很懒，什么都没有留下");
+            setDefaultHead();
+            setState("none");
+            return;
+        }
         try {
             JSONObject param=new JSONObject();
             param.put("uid",AppKt.getGlobalUid());
-            HttpUtilKt.postJsonRequest(getContext(), HttpUtilKt.getHOST_ADDRESS() + "/getUserInfo", param.toString(), new Callback() {
+            HttpUtilKt.postJsonRequest(getContext(), HttpUtilKt.getHOST_ADDRESS() + "/me/info/get", param.toString(), new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
                     getActivity().runOnUiThread(new Runnable() {
@@ -82,7 +118,8 @@ public class PersonFragment extends Fragment implements View.OnClickListener{
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
-                    String body=response.body().toString();
+                    String body = response.body().string();
+                    Log.d("PF init:", body);
                     if(JsonUtilKt.isGoodJson(body)){
                         try {
                             JSONObject res=new JSONObject(body);
@@ -91,10 +128,19 @@ public class PersonFragment extends Fragment implements View.OnClickListener{
                                 @Override
                                 public void run() {
                                     try {
-                                        name.setText(userinfo.getString("name"));
-                                        words.setText(userinfo.getString("sign"));
-                                        concern.setText("关注：" + userinfo.getString("concern"));
-
+                                        UserModel user = new UserModel();
+                                        user.name = userinfo.getString("name");
+                                        user.sign = userinfo.getString("sign");
+                                        user.icon = userinfo.getString("icon");
+                                        getActivity().runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                name.setText(user.name);
+                                                words.setText(user.sign);
+                                                Glide.with(getContext()).load(user.icon).into(icon);
+                                                PersonFragment.this.setState("user");
+                                            }
+                                        });
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
@@ -121,10 +167,36 @@ public class PersonFragment extends Fragment implements View.OnClickListener{
         }
 
     }
-    public void set(String yourName,ImageView iconUrl,String yourWords,int concernNum,int fansNum)
+
+    public void setDefaultHead() {
+        Glide.with(getActivity()).load(R.drawable.ic_user_default_head).into(icon);
+    }
+
+    public void setState(String root) {
+        if (root == "none") {
+            becomeAnchorButton.setVisibility(View.VISIBLE);
+            anchorStudioButton.setVisibility(View.GONE);
+            loginButton.setVisibility(View.VISIBLE);
+            exitButton.setVisibility(View.GONE);
+
+            setDefaultHead();
+        } else if (root == "user") {
+            becomeAnchorButton.setVisibility(View.VISIBLE);
+            anchorStudioButton.setVisibility(View.GONE);
+            loginButton.setVisibility(View.GONE);
+            exitButton.setVisibility(View.VISIBLE);
+        } else if (root == "anchor") {
+            becomeAnchorButton.setVisibility(View.GONE);
+            anchorStudioButton.setVisibility(View.VISIBLE);
+            loginButton.setVisibility(View.GONE);
+            exitButton.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void set(String yourName, String iconUrl, String yourWords, int concernNum, int fansNum)
     {
         if(yourName!=null) name.setText(yourName);
-        if(iconUrl!=null);
+        if (iconUrl != null) Glide.with(icon.getContext()).load(iconUrl).into(icon);
         if(yourWords!=null) words.setText(yourWords);
         if(concernNum>=0) concern.setText("关注："+concernNum);
         if(fansNum>=0) fans.setText("粉丝："+fansNum);
@@ -146,6 +218,10 @@ public class PersonFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
+        if (!isLogin()) {
+            login();
+            return;
+        }
         switch (view.getId())
         {
             case R.id.set_person_info:
@@ -162,6 +238,12 @@ public class PersonFragment extends Fragment implements View.OnClickListener{
                 break;
             case R.id.bar_subscribe:
                 startOrderChannelActivity();
+                break;
+            case R.id.person_login:
+                login();
+                break;
+            case R.id.person_exit:
+                exit();
                 break;
         }
     }
@@ -187,7 +269,7 @@ public class PersonFragment extends Fragment implements View.OnClickListener{
             case PERSON_INFO_SETTING_CODE:
                 switch (resultCode){
                     case RESULT_OK:
-
+                        init();
                         return;
                 }
                 break;
@@ -195,6 +277,13 @@ public class PersonFragment extends Fragment implements View.OnClickListener{
                 break;
             case REPORT_QUESTIONG_CODE:
                 Toast.makeText(getActivity(),"感谢您的建议~~",Toast.LENGTH_SHORT).show();
+                break;
+            case PERSON_LOGIN_CODE:
+                if (AppKt.getGlobalUid() != 0) {
+                    init();
+                } else {
+                    Toast.makeText(getActivity(), "未登陆", Toast.LENGTH_LONG).show();
+                }
                 break;
         }
         return;
