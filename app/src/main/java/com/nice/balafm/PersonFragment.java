@@ -1,6 +1,5 @@
 package com.nice.balafm;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,7 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.nice.balafm.model.AnchorModel;
 import com.nice.balafm.model.UserModel;
 import com.nice.balafm.util.HttpUtilKt;
 import com.nice.balafm.util.JsonUtilKt;
@@ -87,7 +85,7 @@ public class PersonFragment extends Fragment implements View.OnClickListener{
 
     public void exit() {
         AppKt.setGlobalUid(0);
-        init();
+        login();
     }
 
     public boolean isLogin() {
@@ -173,19 +171,19 @@ public class PersonFragment extends Fragment implements View.OnClickListener{
     }
 
     public void setState(String root) {
-        if (root == "none") {
+        if (root.equals("none")) {
             becomeAnchorButton.setVisibility(View.VISIBLE);
             anchorStudioButton.setVisibility(View.GONE);
             loginButton.setVisibility(View.VISIBLE);
             exitButton.setVisibility(View.GONE);
 
             setDefaultHead();
-        } else if (root == "user") {
+        } else if (root.equals("user")) {
             becomeAnchorButton.setVisibility(View.VISIBLE);
             anchorStudioButton.setVisibility(View.GONE);
             loginButton.setVisibility(View.GONE);
             exitButton.setVisibility(View.VISIBLE);
-        } else if (root == "anchor") {
+        } else if (root.equals("anchor")) {
             becomeAnchorButton.setVisibility(View.GONE);
             anchorStudioButton.setVisibility(View.VISIBLE);
             loginButton.setVisibility(View.GONE);
@@ -208,7 +206,7 @@ public class PersonFragment extends Fragment implements View.OnClickListener{
         startActivityForResult(intent,REPORT_QUESTIONG_CODE);
     }
 
-    public void settiing()
+    public void setting()
     {
         Toast.makeText(getActivity(),"babababab",Toast.LENGTH_SHORT).show();
         Log.d("MainActivity","setting start...");
@@ -225,7 +223,7 @@ public class PersonFragment extends Fragment implements View.OnClickListener{
         switch (view.getId())
         {
             case R.id.set_person_info:
-                settiing();
+                setting();
                 break;
             case R.id.bar_safe:
                 startSafeActivity();
@@ -279,11 +277,9 @@ public class PersonFragment extends Fragment implements View.OnClickListener{
                 Toast.makeText(getActivity(),"感谢您的建议~~",Toast.LENGTH_SHORT).show();
                 break;
             case PERSON_LOGIN_CODE:
-                if (AppKt.getGlobalUid() != 0) {
-                    init();
-                } else {
+                if (AppKt.getGlobalUid() == 0)
                     Toast.makeText(getActivity(), "未登陆", Toast.LENGTH_LONG).show();
-                }
+                init();
                 break;
         }
         return;
