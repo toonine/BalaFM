@@ -89,7 +89,7 @@ public class PersonFragment extends Fragment implements View.OnClickListener{
 
     public void exit() {
         AppKt.setGlobalUid(0);
-        init();
+        login();
     }
 
     public boolean isLogin() {
@@ -175,20 +175,20 @@ public class PersonFragment extends Fragment implements View.OnClickListener{
     }
 
     public void setState(String root) {
-        if (root == "none") {
+        if (root.equals("none")) {
             becomeAnchorButton.setVisibility(View.VISIBLE);
             anchorStudioButton.setVisibility(View.GONE);
             loginButton.setVisibility(View.VISIBLE);
             exitButton.setVisibility(View.GONE);
             content.setVisibility(View.GONE);
             setDefaultHead();
-        } else if (root == "user") {
+        } else if (root.equals("user")) {
             becomeAnchorButton.setVisibility(View.VISIBLE);
             anchorStudioButton.setVisibility(View.GONE);
             loginButton.setVisibility(View.GONE);
             exitButton.setVisibility(View.VISIBLE);
             content.setVisibility(View.VISIBLE);
-        } else if (root == "anchor") {
+        } else if (root.equals("anchor")) {
             becomeAnchorButton.setVisibility(View.GONE);
             anchorStudioButton.setVisibility(View.VISIBLE);
             loginButton.setVisibility(View.GONE);
@@ -282,9 +282,7 @@ public class PersonFragment extends Fragment implements View.OnClickListener{
                 Toast.makeText(getActivity(),"感谢您的建议~~",Toast.LENGTH_SHORT).show();
                 break;
             case PERSON_LOGIN_CODE:
-                if (AppKt.getGlobalUid() != 0) {
-                    init();
-                } else {
+                if (AppKt.getGlobalUid() == 0) {
                     Toast.makeText(getActivity(), "未登陆", Toast.LENGTH_LONG).show();
                 }
                 break;
