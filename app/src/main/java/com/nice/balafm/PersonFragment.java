@@ -45,6 +45,7 @@ public class PersonFragment extends Fragment implements View.OnClickListener{
     private View exitButton;
     private View anchorStudioButton;
     private View becomeAnchorButton;
+    private View content;
     private static final int PERSON_INFO_SETTING_CODE=1;
     private static final int USER_SAFE_CODE=2;
     private static final int REPORT_QUESTIONG_CODE=3;
@@ -67,6 +68,7 @@ public class PersonFragment extends Fragment implements View.OnClickListener{
         exitButton = view.findViewById(R.id.person_exit);
         anchorStudioButton = view.findViewById(R.id.person_ahchor_studio);
         becomeAnchorButton = view.findViewById(R.id.person_become_anchor);
+        content = view.findViewById(R.id.person_content);
 
         adviceBar.setOnClickListener(this);
         safeBar.setOnClickListener(this);
@@ -178,18 +180,20 @@ public class PersonFragment extends Fragment implements View.OnClickListener{
             anchorStudioButton.setVisibility(View.GONE);
             loginButton.setVisibility(View.VISIBLE);
             exitButton.setVisibility(View.GONE);
-
+            content.setVisibility(View.GONE);
             setDefaultHead();
         } else if (root == "user") {
             becomeAnchorButton.setVisibility(View.VISIBLE);
             anchorStudioButton.setVisibility(View.GONE);
             loginButton.setVisibility(View.GONE);
             exitButton.setVisibility(View.VISIBLE);
+            content.setVisibility(View.VISIBLE);
         } else if (root == "anchor") {
             becomeAnchorButton.setVisibility(View.GONE);
             anchorStudioButton.setVisibility(View.VISIBLE);
             loginButton.setVisibility(View.GONE);
             exitButton.setVisibility(View.VISIBLE);
+            content.setVisibility(View.VISIBLE);
         }
     }
 
@@ -210,7 +214,6 @@ public class PersonFragment extends Fragment implements View.OnClickListener{
 
     public void settiing()
     {
-        Toast.makeText(getActivity(),"babababab",Toast.LENGTH_SHORT).show();
         Log.d("MainActivity","setting start...");
         Intent intent=new Intent(this.getActivity(),PersonInfoActivity.class);
         startActivityForResult(intent,PERSON_INFO_SETTING_CODE);
